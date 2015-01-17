@@ -1,7 +1,7 @@
 from django.contrib import admin
 from houseman.models import Appliance, Room, Floor
 
-class ChoiceInLine(admin.StackedInLine):
+class ApplianceInline(admin.StackedInline):
     model = Appliance
     extra = 3
 
@@ -10,9 +10,9 @@ class RoomAdmin(admin.ModelAdmin):
         (None, {'fields': ['name']}),
         (None, {'fields': ['floor']}),
     ]
-    inlines = [ChoiceInLine]
+    inlines = [ApplianceInline]
 
 admin.site.register(Room, RoomAdmin)
-#admin.site.register(Floor)
+admin.site.register(Floor)
 
 
