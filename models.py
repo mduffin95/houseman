@@ -3,7 +3,7 @@ from django.db import models
 
 class Floor(models.Model):
     name = models.CharField(max_length=200)
-    number = models.IntegerField(unique=True)
+    number = models.IntegerField(unique=True, default=0)
     
     def __str__(self):
         return self.name
