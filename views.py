@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
+from django.core.urlresolvers import reverse
 
 def index(request):
     appliance_list = Appliance.objects.all()
