@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 
