@@ -13,6 +13,6 @@ class RoomAdmin(admin.ModelAdmin):
     inlines = [ChoiceInLine]
 
 admin.site.register(Room, RoomAdmin)
-admin.site.register(Floor)
+#admin.site.register(Floor)
 
 
