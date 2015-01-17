@@ -1,0 +1,9 @@
+<h1>{{ appliance.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'houseman:process' appliance.id %}" method="post">
+{% csrf_token %}
+<input type="submit" name="button" value="on" />
+<input type="submit" name="button" value="off" />
+</form>
