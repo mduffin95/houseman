@@ -21,4 +21,4 @@ def process(request, appliance_id):
     elif status == "off":
         app.off()
         
-    return HttpResponseRedirect(reverse('houseman:index', args=(app.id,)))
+    return HttpResponseRedirect(reverse('houseman:index')))
