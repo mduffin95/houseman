@@ -20,15 +20,18 @@ class Appliance(models.Model):
     lirc_dev = models.CharField('lirc device name', max_length=200)
     create_date = models.DateTimeField('date created')
     room = models.ForeignKey(Room)
+    state = "off"
     
     def __str__(self):
         return self.name
         
     def on(self):
         call(["irsend","SEND_START",self.lirc_dev,"on"])
+        self.state = "on"
         
     def off(self):
         call(["irsend","SEND_START",self.lirc_dev,"off"])
+        self.state = "off"
     
     #Could add this later to allow different types of switch, eg. dimmers.
     #class Meta:
