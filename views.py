@@ -19,7 +19,11 @@ def process(request, appliance_id):
     
     if status == "on":
         app.on()
+        app.state = "on"
+        app.save()
     elif status == "off":
         app.off()
+        app.state = "off"
+        app.save()
         
     return HttpResponseRedirect(reverse('houseman:index'))
