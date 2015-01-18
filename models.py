@@ -25,10 +25,10 @@ class Appliance(models.Model):
         return self.name
         
     def on(self):
-        call(["irsend","SEND_START",lirc_dev,"on"])
+        call(["irsend","SEND_START",self.lirc_dev,"on"])
         
     def off(self):
-        call(["irsend","SEND_START",lirc_dev,"off"])
+        call(["irsend","SEND_START",self.lirc_dev,"off"])
     
     #Could add this later to allow different types of switch, eg. dimmers.
     #class Meta:
