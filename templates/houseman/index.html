@@ -1,3 +1,8 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'houseman/style.css' %}" />
+
+<div class="content_box">
 {% if appliance_list %}
     <ul>
     {% for appliance in appliance_list %}
@@ -7,3 +12,4 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+</div>
