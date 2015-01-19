@@ -2,17 +2,16 @@ from django.http import HttpResponse, HttpResponseRedirect
 from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.views import generic
 
-def index(request):
-    appliance_list = Appliance.objects.all()
-    context = {'appliance_list': appliance_list}
-    return render(request, 'houseman/index.html', context)
+class IndexView(generic.ListView):
+    model = Appliance
+    template_name = 'houseman/index.html'
     
+class DetailView(generic.DetailView): #named switch
+    model = Appliance
+    template_name = 'houseman/switch.html'
     
-def switch(request, appliance_id):
-    appliance = get_object_or_404(Appliance, pk=appliance_id)
-    return render(request, 'houseman/switch.html', {'appliance': appliance})
-
 def process(request, appliance_id):
     app = get_object_or_404(Appliance, pk=appliance_id)
     status = request.POST['button']
