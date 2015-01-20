@@ -14,15 +14,16 @@ class DetailView(generic.DetailView): #named switch
     
 def process(request, appliance_id):
     try:
-        state = request.POST['state']
+        checkState = request.POST['state']
+        app = Appliance.objects.get(pk=appliance_id)
     except (KeyError):
         return HttpResponse("The key was not found.")
         
-    if state == "checked":
+    if checkState == "checked":
         app.on()
         app.state = True
         app.save()
-    elif state == "":
+    else:
         app.off()
         app.state = False
         app.save()
