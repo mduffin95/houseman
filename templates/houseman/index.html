@@ -1,15 +1,23 @@
 {% load staticfiles %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" type="text/css" href="{% static 'houseman/style.css' %}" />
+<script src="{% static 'houseman/script.js' %}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <div class="content_box">
-{% if appliance_list %}
-    <ul>
-    {% for appliance in appliance_list %}
-        <li><a href="{% url 'houseman:switch' appliance.id %}">{{ appliance.name }} ({{ appliance.state }})</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    {% if appliance_list %}
+            <ul class="main_list">
+            {% for appliance in appliance_list %}
+                <li>
+                    <div class="list_float">{{ appliance.name }}</div>
+                    <input type="checkbox" name="{{ appliance.id }}" id="appliance{{ forloop.counter }}" {% if appliance.state %} checked {% endif %}>
+                    <label for="appliance{{ forloop.counter }}"></label>               
+                </li>
+            {% endfor %}
+            </ul>
+        </form>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
 </div>

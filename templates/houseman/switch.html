@@ -1,7 +1,5 @@
-<h1>{{ appliance.name }} ({{ appliance.state }})</h1>
-
-<form action="{% url 'houseman:process' appliance.id %}" method="post">
-{% csrf_token %}
-<input type="submit" name="button" value="on" />
-<input type="submit" name="button" value="off" />
+<form action="{% url 'houseman:switch' appliance.id %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
 </form>

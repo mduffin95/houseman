@@ -1,8 +1,88 @@
 .content_box
 {
-    list-style: none;
     border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
     margin: 20px;
+}
+
+.main_list
+{
+    list-style: none;
+    padding: 0;
+}
+
+.main_list > li
+{
+    margin: 5px 0;
+    overflow: auto;
+    /*text-align: center;*/
+}
+
+.main_list > li > a
+{
+    padding: 5px 2px;
+    background-color: #BFBFBF;
+    display: block;
+}
+
+.list_float
+{
+    float: left;
+    clear: left;
+}
+/*Checkbox*/
+
+.ios_checkbox{
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.ios_checkbox + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.ios_checkbox + label {
+  padding: 2px;
+  width: 120px;
+  height: 60px;
+  background-color: #dddddd;
+  border-radius: 60px;
+  transition: background 0.4s;
+  float: right; /*Added by Matt D*/
+}
+input.ios_checkbox + label:before,
+input.ios_checkbox + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.ios_checkbox + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #fff;
+  border-radius: 60px;
+  transition: background 0.4s;
+}
+input.ios_checkbox + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 52px;
+  background-color: #dddddd;
+  border-radius: 52px;
+  transition: margin 0.4s, background 0.4s;
+}
+input.ios_checkbox:checked + label {
+  background-color: #8ce196;
+}
+input.ios_checkbox:checked + label:after {
+  margin-left: 60px;
+  background-color: #8ce196;
 }
