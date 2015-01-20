@@ -11,7 +11,7 @@
             {% for appliance in appliance_list %}
                 <li>
                     <div class="list_float">{{ appliance.name }}</div>
-                    <input type="checkbox" name="{{ appliance.id }}" id="appliance{{ forloop.counter }}" {% if appliance.state %} checked="checked" {% endif %}>
+                    <input type="checkbox" name="{{ appliance.id }}" id="appliance{{ forloop.counter }}" class="ios_checkbox" {% if appliance.state %} checked="checked" {% endif %}>
                     <label for="appliance{{ forloop.counter }}"></label>               
                 </li>
             {% endfor %}
