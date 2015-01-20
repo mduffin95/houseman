@@ -3,6 +3,7 @@ from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
+import sys
 
 class IndexView(generic.ListView):
     model = Appliance
@@ -23,16 +24,17 @@ def process(request, appliance_id):
         try:
             if app.state:
                 app.off()
-                print("Turning off", flush=True)
+                print("Turning off")
             else:
                 app.on()
-                print("Turning on", flush=True)
+                print("Turning on")
             app.state = not app.state
             app.save()
-            print("About to break", flush=True)
+            print("About to break")
+            sys.stdout.flush()
             break
         except CalledProcessError:
-            print("Still running, looping now", flush=True)
+            print("Still running, looping now")
             continue
         
     return HttpResponseRedirect(reverse('houseman:index'))
