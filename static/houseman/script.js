@@ -28,7 +28,7 @@ $.ajaxSetup({
      } 
 });
 
-$("input").change(
+$(':checkbox').change(
     function() {
         var dataString =  'state=' + $( this ).attr( "checked" );
         var urlWithId = "/" + $(this).attr('name') + "/process/";
