@@ -16,15 +16,15 @@ class DetailView(generic.DetailView): #named switch
     
 def process(request, appliance_id):
 
-    status = request.POST['button']
+    state = request.POST['state']
     
-    if status == "on":
+    if state == "checked":
         app.on()
-        app.state = "on"
+        app.state = True
         app.save()
-    elif status == "off":
+    elif state == "":
         app.off()
-        app.state = "off"
+        app.state = False
         app.save()
         
     return HttpResponseRedirect(reverse('houseman:index'))
