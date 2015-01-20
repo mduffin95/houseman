@@ -1,4 +1,4 @@
-from subprocess import call
+from subprocess import check_call
 from django.db import models
 
 class Floor(models.Model):
@@ -24,13 +24,12 @@ class Appliance(models.Model):
     
     def __str__(self):
         return self.name
-        
+
     def on(self):
-        call(["irsend","SEND_START",self.lirc_dev,"on"])
+        check_call(["irsend","SEND_START",self.lirc_dev,"on"]) #I catch the CalledProcessError within views.py
         
     def off(self):
-        call(["irsend","SEND_START",self.lirc_dev,"off"])
-    
+        check_call(["irsend","SEND_START",self.lirc_dev,"off"]) #I catch the CalledProcessError within views.py
 
         
 

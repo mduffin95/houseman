@@ -18,15 +18,18 @@ def process(request, appliance_id):
         app = Appliance.objects.get(pk=appliance_id)
     except (Appliance.DoesNotExist):
         return HttpResponse("The key was not found.")
-        
-    if app.state:
-        app.off()
-        app.state = False
-        app.save()
-    else:
-        app.on()
-        app.state = True
-        app.save()
+    
+    while True:
+        try:
+            if app.state:
+                app.off()
+            else:
+                app.on()
+            app.state = not app.state
+            app.save()
+            break
+        except (CalledProcessError):
+            continue
         
     return HttpResponseRedirect(reverse('houseman:index'))
     
