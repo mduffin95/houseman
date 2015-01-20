@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
 from subprocess import CalledProcessError
+from time import sleep
 
 class IndexView(generic.ListView):
     model = Appliance
@@ -29,7 +30,8 @@ def process(request, appliance_id):
             app.state = not app.state
             app.save()
             break
-        except (CalledProcessError, OSError):
+        except (CalledProcessError, OSError): #Might not be a good idea to catch OSError here.
+            sleep(0.2)
             continue
         
     return HttpResponseRedirect(reverse('houseman:index'))
