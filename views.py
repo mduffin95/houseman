@@ -28,7 +28,8 @@ def process(request, appliance_id):
             app.state = not app.state
             app.save()
             break
-        except (CalledProcessError):
+        except CalledProcessError:
+            print("Still running, looping now")
             continue
         
     return HttpResponseRedirect(reverse('houseman:index'))
