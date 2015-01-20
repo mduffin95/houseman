@@ -3,7 +3,7 @@ from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
-import sys
+import sys, subprocess
 
 class IndexView(generic.ListView):
     model = Appliance
@@ -33,7 +33,7 @@ def process(request, appliance_id):
             print("About to break")
             sys.stdout.flush()
             break
-        except CalledProcessError:
+        except (subprocess.CalledProcessError, OSError):
             print("Still running, looping now")
             continue
         
