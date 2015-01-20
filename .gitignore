@@ -1,2 +1,4 @@
 *~
 forms.py
+*.pyc
+migrations/
