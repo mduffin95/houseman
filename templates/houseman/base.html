@@ -1,0 +1,17 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'houseman/style.css' %}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'houseman/script.js' %}"></script>
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

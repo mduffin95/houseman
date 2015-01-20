@@ -1,4 +1,8 @@
-{% extends "houseman/base_generic.html" %}
+{% extends "houseman/base.html" %}
+
+{% block title %}Matt's Room{% endblock %}
+
+{% block content %}
 <div class="content_box">
     {% if appliance_list %}
             <ul class="main_list">
@@ -15,3 +19,4 @@
         <p>No polls are available.</p>
     {% endif %}
 </div>
+{% endblock %}
