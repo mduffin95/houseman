@@ -3,7 +3,7 @@ from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
-from subprocess import check_call,CalledProcessError
+from subprocess import CalledProcessError
 
 class IndexView(generic.ListView):
     model = Appliance
