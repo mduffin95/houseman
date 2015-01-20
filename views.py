@@ -19,13 +19,13 @@ def process(request, appliance_id):
     except (KeyError):
         return HttpResponse("The key was not found.")
         
-    if checkState == "checked":
-        app.on()
-        app.state = True
-        app.save()
-    else:
+    if app.state:
         app.off()
         app.state = False
+        app.save()
+    else:
+        app.on()
+        app.state = True
         app.save()
         
     return HttpResponseRedirect(reverse('houseman:index'))
