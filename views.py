@@ -23,16 +23,16 @@ def process(request, appliance_id):
         try:
             if app.state:
                 app.off()
-                print("Turning off")
+                print("Turning off", flush=True)
             else:
                 app.on()
-                print("Turning on")
+                print("Turning on", flush=True)
             app.state = not app.state
             app.save()
-            print("About to break")
+            print("About to break", flush=True)
             break
         except CalledProcessError:
-            print("Still running, looping now")
+            print("Still running, looping now", flush=True)
             continue
         
     return HttpResponseRedirect(reverse('houseman:index'))
