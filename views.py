@@ -13,9 +13,11 @@ class DetailView(generic.DetailView): #named switch
     template_name = 'houseman/switch.html'
     
 def process(request, appliance_id):
-
-    state = request.POST['state']
-    
+    try:
+        state = request.POST['state']
+    except (KeyError):
+        return HttpResponse("The key was not found.")
+        
     if state == "checked":
         app.on()
         app.state = True
