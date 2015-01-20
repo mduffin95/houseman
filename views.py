@@ -3,8 +3,6 @@ from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
-from houseman.forms import ApplianceSwitchForm
-
 
 class IndexView(generic.ListView):
     model = Appliance
