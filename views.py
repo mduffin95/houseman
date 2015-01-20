@@ -14,9 +14,9 @@ class DetailView(generic.DetailView): #named switch
     
 def process(request, appliance_id):
     try:
-        checkState = request.POST['state']
+        #checkState = request.POST['state']
         app = Appliance.objects.get(pk=appliance_id)
-    except (KeyError):
+    except (Appliance.DoesNotExist):
         return HttpResponse("The key was not found.")
         
     if app.state:
