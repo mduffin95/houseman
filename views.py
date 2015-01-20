@@ -23,10 +23,13 @@ def process(request, appliance_id):
         try:
             if app.state:
                 app.off()
+                print("Turning off")
             else:
                 app.on()
+                print("Turning on")
             app.state = not app.state
             app.save()
+            print("About to break")
             break
         except CalledProcessError:
             print("Still running, looping now")
