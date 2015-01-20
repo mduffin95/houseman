@@ -33,7 +33,7 @@ $( document ).ready(function(){
     $(':checkbox').change(
         function() {
             var dataString =  'state=' + $( this ).attr( "checked" );
-            var urlWithId = "/" + $(this).attr('name') + "/process/";
+            var urlWithId = "/houseman/" + $(this).attr('name') + "/process/";
             $.ajax
             ({
                 type: "POST",
