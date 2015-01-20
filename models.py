@@ -1,4 +1,4 @@
-from subprocess import check_call
+from subprocess import check_call,CalledProcessError
 from django.db import models
 
 class Floor(models.Model):
