@@ -30,17 +30,28 @@ $.ajaxSetup({
 
 $( document ).ready(function(){
 
-    $(':checkbox').change(
+    $('.Switch').click(
         function() {
-            var dataString =  'state=' + $( this ).attr( "checked" );
+            if ($(this).hasClass('On')) {
+                var dataString =  'state=1'; //Current state is on, so turn off
+            }
+            else {
+                var dataString =  'state=0'; //Current state is off, so turn on
+            }
             console.log(dataString);
-            var urlWithId = "/houseman/" + $(this).attr('name') + "/process/";
+            var urlWithId = "/houseman/" + $(this).attr('id') + "/process/";
             console.log(urlWithId);
             $.ajax
             ({
                 type: "POST",
                 url: urlWithId,
                 data: dataString,
+                success: function(){
+                    $(this).toggleClass('On').toggleClass('Off');
+                },
+                error: function(){
+                    alert('Something went wrong')
+                }
             });
         }
     )

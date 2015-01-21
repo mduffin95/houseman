@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from houseman.models import Appliance
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
@@ -16,25 +16,27 @@ class DetailView(generic.DetailView): #named switch
     
 def process(request, appliance_id):
     try:
-        #checkState = request.POST['state']
+        stateStr = request.POST['state']    
         app = Appliance.objects.get(pk=appliance_id)
-    except (Appliance.DoesNotExist):
-        return HttpResponse("The key was not found.")
+    except (Appliance.DoesNotExist, KeyError):
+        return HttpResponseBadRequest("Something went wrong. stateStr=" + stateStr)
     
     while True:
         try:
-            if app.state:
+            if (app.state and stateStr == "1"): #If db says it is on and the website says it is on
                 app.off()
-            else:
+            elif ((not app.state) and stateStr == "0"):
                 app.on()
+            else:
+                return HttpResponseForbidden("You've pressed the button too many times") #This state could occur if the button is pressed too many times
             app.state = not app.state
             app.save()
-            break
+            return HttpResponse("All is well.")
         except (CalledProcessError, OSError): #Might not be a good idea to catch OSError here.
             sleep(0.2)
             continue
         
-    return HttpResponseRedirect(reverse('houseman:index'))
+    
     
 '''def get_state(request, appliance_id):
     try:
