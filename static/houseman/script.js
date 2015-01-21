@@ -46,9 +46,9 @@ $( document ).ready(function(){
                 type: "POST",
                 url: urlWithId,
                 data: dataString,
+                context: this,
                 success: function(){
                     $(this).toggleClass('On').toggleClass('Off');
-                    alert("success");
                 },
                 error: function(jqXHR, textStatus, errorThrown) 
                 {
