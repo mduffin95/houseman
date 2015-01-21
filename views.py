@@ -28,7 +28,7 @@ def process(request, appliance_id):
             elif ((not app.state) and stateStr == "0"):
                 app.on()
             else:
-                return HttpResponseForbidden("You've pressed the button too many times") #This state could occur if the button is pressed too many times
+                return HttpResponseForbidden("You've pressed the button too many times. stateStr=" + stateStr + " app.state=" + str(app.state)) #This state could occur if the button is pressed too many times
             app.state = not app.state
             app.save()
             return HttpResponse("All is well.")
