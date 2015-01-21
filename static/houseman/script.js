@@ -38,9 +38,7 @@ $( document ).ready(function(){
             else {
                 var dataString =  'state=0'; //Current state is off, so turn on
             }
-            console.log(dataString);
             var urlWithId = "/houseman/" + $(this).attr('id') + "/process/";
-            console.log(urlWithId);
             $.ajax
             ({
                 type: "POST",
@@ -49,10 +47,6 @@ $( document ).ready(function(){
                 context: this,
                 success: function(){
                     $(this).toggleClass('On').toggleClass('Off');
-                },
-                error: function(jqXHR, textStatus, errorThrown) 
-                {
-                    alert(errorThrown);
                 },
             });
         }
