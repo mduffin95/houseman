@@ -49,9 +49,10 @@ $( document ).ready(function(){
                 success: function(){
                     $(this).toggleClass('On').toggleClass('Off');
                 },
-                error: function(){
-                    alert('Something went wrong')
-                }
+                error: function(jqXHR, textStatus, errorThrown) 
+                {
+                    alert(errorThrown);
+                },
             });
         }
     )
