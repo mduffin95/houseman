@@ -48,6 +48,7 @@ $( document ).ready(function(){
                 data: dataString,
                 success: function(){
                     $(this).toggleClass('On').toggleClass('Off');
+                    alert("success");
                 },
                 error: function(jqXHR, textStatus, errorThrown) 
                 {
