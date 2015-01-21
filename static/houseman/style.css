@@ -180,8 +180,8 @@ z-index: 999;
 -ms-transition: all 0.15s ease-in-out;
 }
 
-.Switch.On .Toggle { left: 2%; }
-.Switch.Off .Toggle { left: 54%; }
+.Switch.On .Toggle { left: 54%; }
+.Switch.Off .Toggle { left: 2%; }
 
 
 /* Round Switch */
