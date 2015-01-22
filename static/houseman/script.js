@@ -46,7 +46,12 @@ $( document ).ready(function(){
                 data: dataString,
                 context: this,
                 success: function(){
-                    $(this).toggleClass('On').toggleClass('Off');
+                    if (dataString == "state=1") {
+                        $(this).removeClass("On").addClass("Off");
+                    }
+                    else {
+                        $(this).removeClass("Off").addClass("On");
+                    }
                 },
             });
         }
