@@ -20,9 +20,8 @@ body
 
 .main_list > li
 {
-    margin: 5px 0;
+    padding: 10px 0;
     overflow: auto;
-    /*text-align: center;*/
 }
 
 .main_list > li > a
@@ -36,11 +35,16 @@ body
 {
     float: left;
     clear: left;
-    margin: 20px;
+    margin-top: 3px;
+    font-size: 2em;
+}
+
+.Switch {
+    margin:20px 0;
 }
 
 /*------------------------------------------------*/
-/* Switch SECTION START*/
+/* Switch SECTION START from http://cssdeck.com/labs/a-simple-css-switch with a slight tweak to change the switch on and off positions*/
 /*------------------------------------------------*/
 .Switch {
 position: relative;
