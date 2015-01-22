@@ -39,6 +39,10 @@ body
     font-size: 2em;
 }
 
+.Switch {
+    float: right;
+}
+
 /*------------------------------------------------*/
 /* Switch SECTION START from http://cssdeck.com/labs/a-simple-css-switch with a slight tweak to change the switch on and off positions*/
 /*------------------------------------------------*/
