@@ -18,7 +18,7 @@ class Room(models.Model):
 class Appliance(models.Model):
     name = models.CharField(max_length=200)
     lirc_dev = models.CharField('lirc device name', max_length=200)
-    create_date = models.DateTimeField('date created')
+    create_date = models.DateTimeField('date created', auto_now_add = True) #auto_now_add may need to be removed because it may not give the user a choice any more. Not tested.
     room = models.ForeignKey(Room)
     state = models.BooleanField(default=False)
     
@@ -31,7 +31,8 @@ class Appliance(models.Model):
     def off(self):
         check_call(["irsend","SEND_START",self.lirc_dev,"off"]) #I catch the CalledProcessError within views.py
 
-        
-
-        
-    
+class Alarm(models.Model):
+    appliance = models.ForeignKey(Appliance)
+    create_date = models.DateTimeField('date created', auto_now_add = True)
+    time = models.TimeField()
+    operation = models.BooleanField(default=False)
