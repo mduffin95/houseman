@@ -36,3 +36,7 @@ class Alarm(models.Model):
     create_date = models.DateTimeField('date created', auto_now_add = True)
     time = models.TimeField()
     operation = models.BooleanField(default=False)
+    state = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.name
