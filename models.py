@@ -46,7 +46,7 @@ class Curtain(Appliance):
         sleep(10)
         check_call(["irsend","SEND_START",self.lirc_dev,"off"]) 
 
-class Alarm(models.Model):
+'''class Alarm(models.Model):
     appliance = models.ForeignKey(Appliance)
     create_date = models.DateTimeField('date created', auto_now_add = True)
     time = models.TimeField()
@@ -54,4 +54,4 @@ class Alarm(models.Model):
     state = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.name
+        return self.name'''
