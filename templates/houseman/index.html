@@ -8,9 +8,6 @@
             <ul class="main_list">
             {% for appliance in appliance_list %}
                 <li>
-                    <!--<div class="list_float">{{ appliance.name }}</div>
-                    <input type="checkbox" name="{{ appliance.id }}" id="appliance{{ forloop.counter }}" class="ios_checkbox" {% if appliance.state %} checked="checked" {% endif %}>
-                    <label for="appliance{{ forloop.counter }}"></label>-->
                     <div class="list_float">{{ appliance.name }}</div>
                     <div class="Switch {% if appliance.state %}On{% else %}Off{% endif %}" id="{{ appliance.id }}">
 		                <div class="Toggle"></div>
