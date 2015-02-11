@@ -1,5 +1,5 @@
 from django.contrib import admin
-from houseman.models import Appliance, Room, Floor
+from houseman.models import Appliance, Room, Floor, Curtain
 
 class ApplianceInline(admin.StackedInline):
     model = Appliance
