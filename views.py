@@ -10,9 +10,9 @@ class IndexView(generic.ListView):
     model = Appliance
     template_name = 'houseman/index.html'
     
-class DetailView(generic.DetailView): #named switch
-    model = Appliance
-    template_name = 'houseman/switch.html'
+#class DetailView(generic.DetailView): #named switch
+#    model = Appliance
+#    template_name = 'houseman/switch.html'
     
 def process(request, appliance_id):
     try:
