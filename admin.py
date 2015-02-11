@@ -12,7 +12,7 @@ class CurtainInline(admin.StackedInline):
 class RoomAdmin(admin.ModelAdmin):
     inlines = [
         ApplianceInline,
-        CurtainInLine,
+        CurtainInline,
         ]
 
 admin.site.register(Room, RoomAdmin)
