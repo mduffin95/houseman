@@ -1,5 +1,6 @@
 from subprocess import check_call
 from django.db import models
+from time import sleep
 
 class Floor(models.Model):
     name = models.CharField(max_length=200)
@@ -30,6 +31,17 @@ class Appliance(models.Model):
         
     def off(self):
         check_call(["irsend","SEND_START",self.lirc_dev,"off"]) #I catch the CalledProcessError within views.py
+
+class Curtain(Appliance):
+    def on(self):
+        check_call(["irsend","SEND_START",self.lirc_dev,"on"]) #I catch the CalledProcessError within views.py
+        sleep(10)
+        check_call(["irsend","SEND_START",self.lirc_dev,"off"]) 
+        
+    def off(self):
+        check_call(["irsend","SEND_START",self.lirc_dev,"on"]) #I catch the CalledProcessError within views.py
+        sleep(10)
+        check_call(["irsend","SEND_START",self.lirc_dev,"off"]) 
 
 class Alarm(models.Model):
     appliance = models.ForeignKey(Appliance)
