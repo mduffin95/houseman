@@ -1,6 +1,7 @@
 from subprocess import check_call
 from django.db import models
 from time import sleep
+from model_utils.managers import InheritanceManager
 
 class Floor(models.Model):
     name = models.CharField(max_length=200)
@@ -22,6 +23,8 @@ class Appliance(models.Model):
     create_date = models.DateTimeField('date created', auto_now_add = True) #auto_now_add may need to be removed because it may not give the user a choice any more. Not tested.
     room = models.ForeignKey(Room)
     state = models.BooleanField(default=False)
+    
+    objects = InheritanceManager()
     
     def __str__(self):
         return self.name
