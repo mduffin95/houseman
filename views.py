@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from subprocess import CalledProcessError
 from time import sleep
+from model_utils.managers import InheritanceManager
 
 class IndexView(generic.ListView):
     model = Appliance
@@ -17,7 +18,7 @@ class IndexView(generic.ListView):
 def process(request, appliance_id):
     try:
         stateStr = request.POST['state']    
-        app = Appliance.objects.get(pk=appliance_id)
+        app = Appliance.objects.get_subclass(pk=appliance_id) #This ensures a Curtain will be returned instead of an Appliance.
     except (Appliance.DoesNotExist, KeyError):
         return HttpResponseBadRequest("Something went wrong. stateStr=" + stateStr)
     
