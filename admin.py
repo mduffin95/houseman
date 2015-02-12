@@ -1,9 +1,9 @@
 from django.contrib import admin
 from houseman.models import Appliance, Room, Floor, Curtain
 
-class ApplianceInline(admin.StackedInline):
-    model = Appliance
-    extra = 3
+class DefaultInline(admin.StackedInline):
+    model = DefaultApp
+    extra = 1
     
 class CurtainInline(admin.StackedInline):
     model = Curtain
@@ -11,7 +11,7 @@ class CurtainInline(admin.StackedInline):
 
 class RoomAdmin(admin.ModelAdmin):
     inlines = [
-        ApplianceInline,
+        DefaultInline,
         CurtainInline,
         ]
 

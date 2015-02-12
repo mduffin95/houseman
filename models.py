@@ -1,7 +1,6 @@
 from subprocess import check_call
 from django.db import models
 from time import sleep
-from model_utils.managers import InheritanceManager
 
 class Floor(models.Model):
     name = models.CharField(max_length=200)
@@ -24,11 +23,14 @@ class Appliance(models.Model):
     room = models.ForeignKey(Room)
     state = models.BooleanField(default=False)
     
-    objects = InheritanceManager()
+    class Meta:
+        abstract = True
+        ordering = ['name']
     
     def __str__(self):
         return self.name
-
+        
+class DefaultApp(Appliance):
     def on(self):
         check_call(["irsend","SEND_START",self.lirc_dev,"on"]) #I catch the CalledProcessError within views.py
         
