@@ -1,5 +1,5 @@
 from django.contrib import admin
-from houseman.models import DefaultApp, Room, Floor, Curtain
+from houseman.models import *
 
 class DefaultInline(admin.StackedInline):
     model = DefaultApp
