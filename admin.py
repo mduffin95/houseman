@@ -1,5 +1,5 @@
 from django.contrib import admin
-from houseman.models import Appliance, Room, Floor
+from houseman.models import Appliance, Curtain, Room, Floor
 
 class ApplianceInline(admin.StackedInline):
     model = Appliance
@@ -12,7 +12,7 @@ class CurtainInline(admin.StackedInline):
 class RoomAdmin(admin.ModelAdmin):
     inlines = [
         ApplianceInline,
-        CurtainInLine,
+        CurtainInline,
         ]
 
 admin.site.register(Room, RoomAdmin)
